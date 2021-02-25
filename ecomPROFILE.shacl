@@ -1,0 +1,467 @@
+@base <http://profile-project.eu/data/ecom/>.
+@prefix  ecom: <http://profile-project.eu/data/ecom/>.
+@prefix  dc: <http://purl.org/dc/elements/1.1/>.
+@prefix  foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix gn: <https://www.geonames.org/ontology#>.
+@prefix gr: <http://purl.org/goodrelations/v1#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix  rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix  terms: <http://purl.org/dc/terms/>.
+@prefix  vc: <http://www.w3.org/2006/vcard/ns#>.
+@prefix  xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix  sh: <http://www.w3.org/ns/shacl#>.
+@prefix gn: <https://www.geonames.org/ontology#>.
+
+##################################################################################
+#           Seller Class
+##################################################################################
+ecom:SellerShape a sh:NodeShape;
+sh:targetClass ecom:Seller ;
+sh:closed true;
+sh:ignoredProperties ( rdf:type ) ;
+#sh:targetClass :User ; 
+sh:property [ 
+#       ecom:feedbackPct	"100.0"^^xsd:decimal
+    sh:path ecom:feedbackPct ; 
+    sh:name "feedbackPct";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:minInclusive 0;
+    sh:maxInclusive 100;
+    sh:datatype xsd:decimal ; 
+] ;	
+sh:property [    
+#       ecom:feedbackScore	"3030.0"^^xsd:decimal
+    sh:path ecom:feedbackScore ; 
+    sh:name "feedbackScore";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:decimal ; 
+] ;	
+sh:property [    
+#       ecom:hasPhysicalAddress	ecom:a-mobil-shop_addr
+    sh:path ecom:hasPhysicalAddress ; 
+    sh:name "hasPhysicalAddress";
+    sh:class ecom:Location;
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:nodeKind sh:IRI ; 
+] ;	
+sh:property [    
+#       ecom:marketPlace	"EBAY_DE"
+    sh:path ecom:marketPlace ; 
+    sh:name "marketPlace";
+    sh:in ("EBAY_DE" "EBAY_IT" "EBAY_ES" "EBAY_UK");
+    sh:minCount 1; 
+    sh:maxCount 5; 
+    sh:maxLength 7;
+    sh:datatype xsd:string ; 
+] ;		
+sh:property [    
+#       ecom:sells	ecom:v1%7C133253492745%7C0
+    sh:path ecom:sells ; 
+    sh:name "sells";
+    sh:class ecom:Merchandise ;
+    sh:minCount 0; 
+#    sh:maxCount 1; 
+    sh:nodeKind sh:IRI ; 
+] ;	
+sh:property [    
+#       ecom:totalItems	"3"^^xsd:integer
+    sh:path ecom:totalItems ; 
+    sh:name "totalItems";
+    sh:minCount 1; 
+    sh:maxCount 100; 
+    sh:datatype xsd:integer ; 
+] ;	
+sh:property [    
+#       gr:businessEntityType	"BUSINESS"
+    sh:path gr:businessEntityType ; 
+    sh:name "businessEntityType";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:in ("BUSINESS" "INDIVIDUAL");
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+###  ecom:sellerType 
+    sh:path ecom:sellerType ; 
+    sh:name "sellerType";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:in ("BUSINESS" "INDIVIDUAL");
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+###  ecom:vatNo    
+    sh:path ecom:vatNo ; 
+    sh:name "vatNo";
+    sh:minCount 1; 
+    sh:maxCount 6; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       gr:vatID	"288266626 - DE"
+    sh:path gr:vatID ; 
+    sh:name "vatID";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+###  ecom:regNo    
+    sh:path ecom:regNo ; 
+    sh:name "regNo";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       gr:taxID	"xxxxxxxxxx"
+    sh:path gr:taxID ; 
+    sh:name "taxID";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#       schema:email	"ajjawe.mobil@outlook.de"
+    sh:path schema:email ; 
+    sh:name "email";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#       ecom:email	"ajjawe.mobil@outlook.de"
+    sh:path ecom:email ; 
+    sh:name "email";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       schema:legalName	"bbbbb, bbbbbbb"
+    sh:path schema:legalName ; 
+    sh:name "legalName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:legalName	"bbbbb, bbbbbbb"
+    sh:path ecom:legalName ; 
+    sh:name "legalName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+
+] ;	
+sh:property [    
+#       foaf:familyName	"bbbbb"
+    sh:path foaf:familyName ; 
+    sh:name "familyName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#       ecom:lastName	"bbbbb"
+    sh:path ecom:lastName ; 
+    sh:name "lastName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       foaf:firstName	"bbbbbbb"
+    sh:path foaf:firstName ; 
+    sh:name "firstName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#       ecom:firstName	"bbbbbbb"
+    sh:path ecom:firstName ; 
+    sh:name "firstName";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       foaf:nickname	"a-mobil-shop"
+    sh:path foaf:nickname ; 
+    sh:name "nickname";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;
+sh:property [    
+#       ecom:userName	"a-mobil-shop"
+    sh:path ecom:userName ; 
+    sh:name "nickname";
+    sh:minCount 0; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;
+sh:property [    
+#       ecom:pNo	"xxxxxxxxxx"
+    sh:path ecom:pNo ; 
+    sh:name "Phone Number";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    #sh:deactivated true; 
+] .
+
+##################################################################################
+#       rdf:type	ecom:Location
+#           Location Class
+##################################################################################
+ecom:LocationShape a sh:NodeShape;
+sh:targetClass ecom:Location ;
+sh:closed false;
+sh:ignoredProperties ( rdf:type ) ;
+#sh:targetClass :Location ; 
+sh:property [    
+#       ecom:addressOf	ecom:a-mobil-shop	
+    sh:path ecom:addressOf; 
+    sh:name "addressOf";
+    sh:class ecom:Seller;
+    sh:minCount 1; 
+    #sh:maxCount 1; 
+    sh:nodeKind sh:IRI ; 
+] ;	
+sh:property [ 
+#       ecom:countryName	"Germany"
+    sh:path ecom:countryName ; 
+    sh:name "countryName";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       ecom:countryCode	"DE"
+    sh:path ecom:countryCode ; 
+    sh:name "countryCode";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:maxLength 2;
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       schema:addressCountry	"DE"
+    sh:path schema:addressCountry ; 
+    sh:name "addressCountry";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:maxLength 2;
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#        schema:addressLocality	"Berlin"
+    sh:path schema:addressLocality ; 
+    sh:name "addressLocality";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    sh:deactivated true;
+] ;	
+sh:property [    
+#        ecom:city	"Berlin"
+    sh:path ecom:city ; 
+    sh:name "City";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    #sh:deactivated true;
+] ;	
+sh:property [    
+#        ecom:region	"xxxxx"
+    sh:path ecom:region ; 
+    sh:name "address Region";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+    #sh:deactivated true;
+] ;	
+sh:property [    
+#       schema:streetAddress	"Emdener Str.26"
+    sh:path schema:streetAddress ; 
+    sh:name "streetAddress";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:address	"Emdener Str.26"
+    sh:path ecom:address ; 
+    sh:name "street Address";
+    sh:minCount 1; 
+    sh:maxCount 2; 
+    sh:datatype xsd:string ;
+    #sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:postCode "10551"
+    sh:path ecom:postCode; 
+    sh:name "Post Code";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    #sh:deactivated true; 
+] ;
+sh:property [    
+#      gn:postalCode "10551"
+    sh:path gn:postalCode; 
+    sh:name "PostCode";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    sh:deactivated true; 
+] .
+##################################################################################
+#       rdf:type ecom:Merchandise
+#               Merchandise Class
+##################################################################################
+ecom:MerchandiseShape a sh:NodeShape;
+sh:targetClass ecom:Merchandise ;
+sh:closed false;
+sh:ignoredProperties ( rdf:type ecom:itemURL ) ;
+#sh:targetClass :Merchandise ; 
+sh:property [ 
+#       ecom:addressCountry	"DE"
+    sh:path schema:addressCountry ; 
+    sh:name "addressCountry";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:maxLength 2;
+    sh:datatype xsd:string ;
+    sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:countryCode	"DE"
+    sh:path ecom:countryCode ; 
+    sh:name "countryCode";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:maxLength 2;
+    sh:datatype xsd:string ; 
+    sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:buyingOption	"FIXED_PRICE"
+    sh:path ecom:buyingOption ; 
+    sh:name "Buying Option - FIXED PRICE, etc.";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:in ("FIXED_PRICE");
+    sh:datatype xsd:string ; 
+    sh:deactivated false;
+] ;	
+sh:property [    
+#       ecom:Location	"DE"
+    sh:path ecom:Location ; 
+    sh:name "Location of Item, CountryCode";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:maxLength 2;
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#	    ecom:condition	"New - some issues"
+    sh:path ecom:condition ; 
+    sh:name "condition";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#	    ecom:currency	"EUR"
+    sh:path ecom:currency; 
+    sh:name "currency";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#	    ecom:itemType	"phone"
+    sh:path ecom:itemType; 
+    sh:name "phone";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#	    ecom:itemURL	
+    sh:path ecom:itemURL; 
+    sh:name "itemURL";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       ecom:priceCategory	"high"
+    sh:path ecom:priceCategory; 
+    sh:name "priceCategory";
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] ;	
+sh:property [    
+#       ecom:soldBy	ecom:a-mobil-shop	
+    sh:path ecom:soldBy; 
+    sh:name "soldBy";
+    sh:class ecom:Seller;
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:nodeKind sh:IRI ; 
+] ;	
+sh:property [    
+#       gr:PriceSpecification	"499.0"^^xsd:decimal
+    sh:name "priceSpecification";
+    sh:path gr:PriceSpecification; 
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:decimal ;
+    sh:deactivated true; 
+] ;	
+sh:property [    
+#       ecom:price	"499.0"^^xsd:decimal
+    sh:name "price";
+    sh:path ecom:price; 
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:decimal ; 
+] ;	
+sh:property [    
+    sh:name "description";
+#       schema:description	"Apple Iphone X 64GB Spacegrau Ohne Simlock - neuwertig - Rechnung"
+    sh:path schema:description; 
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ;
+    sh:deactivated true; 
+] ;
+sh:property [    
+    sh:name "description";
+#       ecom:description	"Apple Iphone X 64GB Spacegrau Ohne Simlock - neuwertig - Rechnung"
+    sh:path ecom:description; 
+    sh:minCount 1; 
+    sh:maxCount 1; 
+    sh:datatype xsd:string ; 
+] .
