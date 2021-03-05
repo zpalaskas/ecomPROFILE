@@ -1,0 +1,1484 @@
+Prefix: : <https://www.crossborder-project.eu/ontology/eucdm/vocab/>
+Prefix: eucdm: <http://www.crossborder-project.eu/ontology/eucdm/vocab/>
+Prefix: eucdmm: <http://www.crossborder-project.eu/ontology/eucdm/msg/>
+Prefix: cbrd: <http://www.buyshippay.org/ontology/eucdm/crossborder#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: mmt: <http://www.buyshippay.org/ontology/eucdm/transport#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: sc: <http://www.buyshippay.org/ontology/eucdm/trade#>
+Prefix: terms: <http://purl.org/dc/terms/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: wocdm: <http://www.crossborder-project.eu/wocdm#>
+
+Ontology: <https://www.crossborder-project.eu/ontology/eucdm/vocab/>
+#Import: <https://www.crossborder-project.eu/ontology/wocdm.owl>
+
+Annotations: 
+    dc:description "The EUCDM Ontology"@en,
+    dc:title "EUCDM Ontology"@en,
+    terms:abstract "The ontology of EUCDM as in the TAXUD site."@en,
+    terms:modified "01-03-2021",
+    terms:title "EUCDM Ontology"@en,
+    rdfs:isDefinedBy "https://www.CrossBorder-Project.eu/ontology/eucdm.owl"^^xsd:anyURI,
+    rdfs:label "EUCDM Ontology"@en,
+    owl:versionInfo "0.1 Created by hand in VSCODE maintained with Protégé"^^xsd:string
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+AnnotationProperty: dc:description 
+
+###  http://purl.org/dc/elements/1.1/title
+AnnotationProperty: dc:title   
+
+###  http://www.w3.org/2002/07/owl#versionInfo
+AnnotationProperty: owl:versionInfo  
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+AnnotationProperty: rdfs:comment  
+
+###  http://www.w3.org/2000/01/rdf-schema#isDefinedBy
+AnnotationProperty: rdfs:isDefinedBy   
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+AnnotationProperty: rdfs:label   
+
+###  http://purl.org/dc/terms/abstract
+AnnotationProperty: terms:abstract  
+
+###  http://purl.org/dc/terms/modified
+AnnotationProperty: terms:modified   
+
+###  http://purl.org/dc/terms/title
+AnnotationProperty: terms:title   
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral
+Datatype: rdf:PlainLiteral 
+
+###  http://www.w3.org/2001/XMLSchema#float
+Datatype: xsd:float  
+
+###  http://www.w3.org/2001/XMLSchema#float
+Datatype: xsd:string
+
+#################################################################
+#    Classes
+#################################################################   
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.buyshippay.org/ontology/eucdm/transport#consignmentTransportPackage       
+#ObjectProperty: mmt:consignmentTransportPackage
+#    Annotations: 
+#        rdfs:comment "One Consignment may involve many Transport Packages"@en,
+#        rdfs:label "Consignment Transport Package"@en    
+#    Domain: 
+#        mmt:Consignment,
+#        mmt:transportPackageOfConsignment some mmt:TransportPackage   
+#    Range: 
+#        mmt:TransportPackage
+#    InverseOf:  mmt:transportPackageOfConsignment
+#    Characteristics: Functional
+
+#################################################################
+#    Class  Consignment
+#################################################################    
+
+Class: eucdm:Consignment
+    Annotations:
+    rdfs:label "Consignment"@en    
+    #EquivalentTo: wocdm:MasterConsignment
+
+ObjectProperty: eucdm:consignee
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:consignee exactly 1 eucdm:Consignee 
+    Range: 
+        eucdm:Consignee   
+
+ObjectProperty: eucdm:consignor
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:consignor exactly 1 eucdm:Consignor 
+    Range: 
+        eucdm:Consignor  
+
+DataProperty: eucdm:ContainerIndicator
+    Annotations:
+    rdfs:label "Container Indicator"@en  
+    Domain: 
+        eucdm:Consignment
+    Range: 
+        xsd:string #n1  
+
+ObjectProperty: eucdm:supportingDocument
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:supportingDocument exactly 1 eucdm:SupportingDocument 
+    Range: 
+        eucdm:SupportingDocument  
+
+ObjectProperty: eucdm:additionalInformation
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:additionalInformation exactly 1 eucdm:AdditionalInformation 
+    Range: 
+        eucdm:AdditionalInformation      
+
+ObjectProperty: eucdm:additionalSupplyChainActor
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:additionalSupplyChainActor exactly 1 eucdm:AdditionalSupplyChainActor 
+    Range: 
+        eucdm:AdditionalSupplyChainActor 
+
+ObjectProperty: eucdm:inlandModeOfTransport
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:inlandModeOfTransport exactly 1 eucdm:InlandModeOfTransport 
+    Range: 
+        eucdm:InlandModeOfTransport  
+
+ObjectProperty: eucdm:departureTransportMeans
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:departureTransportMeans exactly 1 eucdm:DepartureTransportMeans 
+    Range: 
+        eucdm:DepartureTransportMeans  
+
+ObjectProperty: eucdm:countryOfDestination
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:locationOfGoods exactly 1 eucdm:CountryOfDestination 
+    Range: 
+        eucdm:CountryOfDestination  
+        
+ObjectProperty: eucdm:locationOfGoods
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:locationOfGoods exactly 1 eucdm:LocationOfGoods 
+    Range: 
+        eucdm:LocationOfGoods  
+
+ObjectProperty: eucdm:consignmentItem
+    Domain: 
+        eucdm:Consignment,  
+        eucdm:consignmentItem some eucdm:ConsignmentItem 
+    Range: 
+        eucdm:ConsignmentItem   
+
+
+
+#################################################################
+#    Class Master Consignment
+#################################################################    
+Class: eucdm:MasterConsignment
+    Annotations:
+    rdfs:label "Master Consignment"@en    
+    #EquivalentTo: wocdm:MasterConsignment
+    SubClassOf: eucdm:Consignment 
+
+ObjectProperty: eucdm:houseConsignment
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:houseConsignment exactly 1 eucdm:HouseConsignment 
+    Range: 
+        eucdm:HouseConsignment       
+
+ObjectProperty: eucdm:itinerary
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:itinerary exactly 1 eucdm:Itinerary 
+    Range: 
+        eucdm:Itinerary       
+
+ObjectProperty: eucdm:previousDocument
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:previousDocument exactly 1 eucdm:PreviousDocument 
+    Range: 
+        eucdm:PreviousDocument      
+
+ObjectProperty: eucdm:transportDocument
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:transportDocument exactly 1 eucdm:TransportDocument 
+    Range: 
+        eucdm:TransportDocument              
+
+ObjectProperty: eucdm:customsOfficeOfTransit
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:customsOfficeOfTransit exactly 1 eucdm:CustomsOfficeOfTransit 
+    Range: 
+        eucdm:CustomsOfficeOfTransit     
+
+ObjectProperty: eucdm:transportEquipment
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:transportEquipment exactly 1 eucdm:TransportEquipment 
+    Range: 
+        eucdm:TransportEquipment
+
+ ObjectProperty: eucdm:referenceNumberUCR
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:referenceNumberUCR exactly 1 eucdm:ReferenceNumberUCR 
+    Range: 
+        eucdm:ReferenceNumberUCR            
+
+ObjectProperty: eucdm:declarationType
+    Domain: 
+        eucdm:MasterConsignment,  
+        eucdm:declarationType exactly 1 eucdm:DeclarationType 
+    Range: 
+        eucdm:DeclarationType 
+
+#################################################################
+#    Class House Consignment
+#################################################################    
+
+Class: eucdm:HouseConsignment
+    Annotations:
+    rdfs:label "House Consignment"@en    
+    #EquivalentTo: wocdm:HouseConsignment
+    SubClassOf: eucdm:Consignment
+
+DataProperty: eucdm:TotalGrossMass
+    Annotations:
+    rdfs:label "Total Gross Mass"@en   
+    Domain: 
+        eucdm:HouseConsignment
+    Range: 
+        xsd:float #n..16,6    
+
+DataProperty: eucdm:ReceptacleIdentificationNumber
+    Annotations:
+    rdfs:label "Receptacle Identification Number"@en  
+    Domain: 
+        eucdm:HouseConsignment
+    Range: 
+        xsd:string #an..17  
+
+ObjectProperty: eucdm:additionalSupplyChainActor
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:additionalSupplyChainActor exactly 1 eucdm:AdditionalSupplyChainActor 
+    Range: 
+        eucdm:AdditionalSupplyChainActor   
+
+ObjectProperty: eucdm:consignee
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:consignee exactly 1 eucdm:Consignee 
+    Range: 
+        eucdm:Consignee   
+
+ObjectProperty: eucdm:consignor
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:consignor exactly 1 eucdm:Consignor 
+    Range: 
+        eucdm:Consignor  
+
+ObjectProperty: eucdm:previousDocument
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:previousDocument exactly 1 eucdm:PreviousDocument 
+    Range: 
+        eucdm:PreviousDocument  
+
+ObjectProperty: eucdm:departureTransportMeans
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:departureTransportMeans exactly 1 eucdm:DepartureTransportMeans 
+    Range: 
+        eucdm:DepartureTransportMeans  
+
+ObjectProperty: eucdm:transportDocument
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:transportDocument exactly 1 eucdm:TransportDocument 
+    Range: 
+        eucdm:TransportDocument  
+
+ObjectProperty: eucdm:referenceNumberUCR
+    Domain: 
+        eucdm:HouseConsignment,  
+        eucdm:referenceNumberUCR exactly 1 eucdm:ReferenceNumberUCR 
+    Range: 
+        eucdm:ReferenceNumberUCR  
+
+#ObjectProperty: eucdm:consignmentItem
+#    Domain: 
+#        eucdm:HouseConsignment,  
+#        eucdm:consignmentItem some eucdm:ConsignmentItem 
+#    Range: 
+#        eucdm:ConsignmentItem   
+
+#################################################################
+#    Class Consignment Item
+#################################################################    
+   
+Class: eucdm:ConsignmentItem
+    Annotations:
+    rdfs:label "Consignment Item"@en   
+    #EquivalentTo: wocdm:ConsignmentItem
+
+ObjectProperty: eucdm:goodsItemNumber
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:goodsItemNumber some eucdm:GoodsItemNumber 
+    Range: 
+        eucdm:GoodsItemNumber   
+
+ObjectProperty: eucdm:supportingDocument
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:supportingDocument exactly 1 eucdm:SupportingDocument 
+    Range: 
+        eucdm:SupportingDocument    
+
+ObjectProperty: eucdm:additionalInformation
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:additionalInformation exactly 1 eucdm:AdditionalInformation 
+    Range: 
+        eucdm:AdditionalInformation      
+
+ObjectProperty: eucdm:additionalSupplyChainActor
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:additionalSupplyChainActor exactly 1 eucdm:AdditionalSupplyChainActor 
+    Range: 
+        eucdm:AdditionalSupplyChainActor   
+
+ObjectProperty: eucdm:descriptionOfGoods
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:descriptionOfGoods exactly 1 eucdm:DescriptionOfGoods 
+    Range: 
+        eucdm:DescriptionOfGoods             
+  
+ObjectProperty: eucdm:grossMass
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:grossMass exactly 1 eucdm:GrossMass 
+    Range: 
+        eucdm:GrossMass  
+
+ObjectProperty: eucdm:declarationType
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:declarationType exactly 1 eucdm:DeclarationType 
+    Range: 
+        eucdm:DeclarationType  
+
+ObjectProperty: eucdm:packaging
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:packaging exactly 1 eucdm:Packaging 
+    Range: 
+        eucdm:Packaging  
+
+ObjectProperty: eucdm:previousDocument
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:previousDocument exactly 1 eucdm:PreviousDocument 
+    Range: 
+        eucdm:PreviousDocument  
+
+ObjectProperty: eucdm:referenceNumberUCR
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:referenceNumberUCR exactly 1 eucdm:ReferenceNumberUCR 
+    Range: 
+        eucdm:ReferenceNumberUCR  
+
+ObjectProperty: eucdm:consignee
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:consignee exactly 1 eucdm:Consignee 
+    Range: 
+        eucdm:Consignee   
+
+ObjectProperty: eucdm:countryOfDestination
+    Domain: 
+        eucdm:ConsignmentItem,  
+        eucdm:countryOfDestination exactly 1 eucdm:CountryOfDestination 
+    Range: 
+        eucdm:CountryOfDestination   
+
+#################################################################
+#    Class Location
+#################################################################    
+
+Class: eucdm:Location
+    Annotations:
+    rdfs:label "Location"@en  
+
+DataProperty: eucdm:UNLOCODE
+    Annotations:  rdfs:label "UNLOCODE"@en   
+    Domain:       eucdm:Location
+    Range:        xsd:string #an..17       
+
+DataProperty: eucdm:AdditionalIdentifier
+    Annotations:  rdfs:label "Additiona lIdentifier"@en   
+    Domain:       eucdm:Location
+    Range:        xsd:string #an..4    
+
+DataProperty: eucdm:TypeOfLocation
+    Annotations:  rdfs:label "Type of Location"@en   
+    Domain:       eucdm:Location
+    Range:        xsd:string #an1      
+
+DataProperty: eucdm:QualifierOfIdentification
+    Annotations:  rdfs:label "Qualifier of identification"@en   
+    Domain:       eucdm:Location
+    Range:        xsd:string #an1    
+
+#################################################################
+#    Class Location Of Goods
+#################################################################    
+
+Class: eucdm:LocationOfGoods
+    Annotations:
+    rdfs:label "Location Of Goods"@en  
+    SubClassOf: eucdm:Location
+
+ObjectProperty: eucdm:country
+    Domain: 
+        eucdm:LocationOfGoods,  
+        eucdm:country exactly 1 eucdm:Country 
+    Range: 
+        eucdm:Country  
+
+DataProperty: eucdm:Country
+    Annotations:
+    rdfs:label "Country"@en   
+    Domain: 
+        eucdm:LocationOfGoods
+    Range: 
+        xsd:string #a2
+
+DataProperty: eucdm:Location
+    Annotations:
+    rdfs:label "Location"@en   
+    Domain: 
+        eucdm:LocationOfGoods
+    Range: 
+        xsd:string #an..35
+
+#################################################################
+#    Class Place of Loading
+#################################################################    
+
+Class: eucdm:PlaceOfLoading
+    Annotations:
+    rdfs:label "Place of Loading"@en  
+    SubClassOf: eucdm:Location
+
+ObjectProperty: eucdm:address
+    Domain: 
+        eucdm:LocationOfGoods,  
+        eucdm:address exactly 1 eucdm:Address 
+    Range: 
+        eucdm:Address  
+
+#################################################################
+#    Class Country
+#################################################################    
+
+Class: eucdm:Country
+    Annotations:
+    rdfs:label "Country"@en    
+    SubClassOf: eucdm:Location     
+  
+DataProperty: eucdm:Country
+    Annotations:
+    rdfs:label "Country"@en   
+    Domain: 
+        eucdm:Country
+    Range: 
+        xsd:string #a2
+
+#################################################################
+#    Class Customs Office of Transit
+#################################################################    
+
+Class: eucdm:CustomsOfficeOfTransit
+    Annotations:
+    rdfs:label "Customs Office of Transit"@en      
+  
+DataProperty: eucdm:ReferenceNumber
+    Annotations:
+    rdfs:label "Reference Number"@en   
+    Domain: 
+        eucdm:CustomsOfficeOfTransit
+    Range: 
+        xsd:string #an8
+
+#################################################################
+#    Class Country Of Destination
+#################################################################    
+
+Class: eucdm:CountryOfDestination
+    Annotations:
+    rdfs:label "Country of Destination"@en    
+    SubClassOf: eucdm:Country  
+
+ DataProperty: eucdm:CountryOfDestination
+    Annotations:
+    rdfs:label "Country Of Destination"@en  
+    SubPropertyOf: eucdm:Country 
+    Domain: 
+        eucdm:CountryOfDestination
+    Range: 
+        xsd:string #a2      
+
+#################################################################
+#    Class Itinerary
+#################################################################    
+
+Class: eucdm:Itinerary
+    Annotations:
+    rdfs:label "Itinerary"@en    
+
+ObjectProperty: eucdm:countryOfRoutingConsignmnent
+    Domain: 
+        eucdm:Itinerary,  
+        eucdm:countryOfRoutingConsignmnent some eucdm:CountryOfRoutingConsignmnent 
+    Range: 
+        eucdm:CountryOfRoutingConsignmnent  
+
+#################################################################
+#    Class Country Of Routing Consignmnent
+#################################################################    
+
+Class: eucdm:CountryOfRoutingConsignmnent
+    Annotations:
+    rdfs:label "Country Of Routing Consignmnent"@en    
+    SubClassOf: eucdm:Country  
+
+ DataProperty: eucdm:SequenceNumber
+    Annotations:
+    rdfs:label "Sequence Number"@en  
+    Domain: 
+        eucdm:CountryOfRoutingConsignmnent
+    Range: 
+        xsd:integer #n2    
+
+#################################################################
+#    Class Address
+#################################################################    
+
+Class: eucdm:Address
+    Annotations:
+    rdfs:label "Address"@en     
+    #EquivalentTo: wocdm:Address
+
+DataProperty: eucdm:City
+    Annotations:
+    rdfs:label "City"@en  
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..35
+
+ObjectProperty: eucdm:country
+    Domain: 
+        eucdm:Address,  
+        eucdm:country exactly 1 eucdm:Country 
+    Range: 
+        eucdm:Country  
+
+DataProperty: eucdm:Country
+    Annotations:
+    rdfs:label "Country"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #a2
+
+DataProperty: eucdm:Subdivision
+    Annotations:
+    rdfs:label "Country Subdivision"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..35
+
+DataProperty: eucdm:StreetAdditionalLine
+    Annotations:
+    rdfs:label "Street Additional Line"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..70
+
+DataProperty: eucdm:StreetAndNumber
+    Annotations:
+    rdfs:label "Street and Number"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..70
+
+DataProperty: eucdm:Street
+    Annotations:
+    rdfs:label "Street"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..70
+
+DataProperty: eucdm:Number
+    Annotations:
+    rdfs:label "Number"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..35
+
+DataProperty: eucdm:Postcode
+    Annotations:
+    rdfs:label "Postcode"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:POBox
+    Annotations:
+    rdfs:label "P.O. Box"@en   
+    Domain: 
+        eucdm:Address
+    Range: 
+        xsd:string #an..70
+
+#################################################################
+#    Class Communication
+#################################################################    
+
+Class: eucdm:Communication
+    Annotations:
+    rdfs:label "Communication"@en     
+    #EquivalentTo: wocdm:Communication
+
+DataProperty: eucdm:Identifier
+    Annotations:
+    rdfs:label "Identifier"@en  
+    Domain: 
+        eucdm:Communication
+    Range: 
+        xsd:string #an..512
+      
+DataProperty: eucdm:Type
+    Annotations:
+    rdfs:label "Type"@en   
+    Domain: 
+        eucdm:Communication
+    Range: 
+        xsd:string #an..3
+
+#################################################################
+#    Class Consignee
+#################################################################        
+Class: eucdm:Consignee
+    Annotations:
+    rdfs:label "Consignee"@en   
+    SubClassOf: 
+        eucdm:SupplyChainActor
+    #EquivalentTo: wocdm:Consignee    
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:Consignee
+    Range: 
+        xsd:string
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:Consignee
+    Range: 
+        xsd:string
+
+ DataProperty: eucdm:Role
+    Annotations:
+    rdfs:label "Role"@en   
+    Domain: 
+        eucdm:Consignee
+    Range: 
+        xsd:string       
+
+ObjectProperty: eucdm:address
+    Domain: 
+        eucdm:Consignee,  
+        eucdm:address some eucdm:Address 
+    Range: 
+        eucdm:Address        
+
+ObjectProperty: eucdm:communication
+    Domain: 
+        eucdm:Consignee,  
+        eucdm:communication exactly 1 eucdm:Communication 
+    Range: 
+        eucdm:Communication  
+
+#################################################################
+#    Class Consignor
+#################################################################        
+Class: eucdm:Consignor
+    Annotations:
+    rdfs:label "Consignor"@en   
+    SubClassOf: eucdm:SupplyChainActor
+    #EquivalentTo: wocdm:Consignor    
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:Consignor
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:Consignor
+    Range: 
+        xsd:string #an..70
+
+ DataProperty: eucdm:Role
+    Annotations:
+    rdfs:label "Role"@en   
+    Domain: 
+        eucdm:Consignor
+    Range: 
+        xsd:string  
+
+ObjectProperty: eucdm:address
+    Domain: 
+        eucdm:Consignor,  
+        eucdm:address some eucdm:Address 
+    Range: 
+        eucdm:Address   
+
+ObjectProperty: eucdm:communication
+    Domain: 
+        eucdm:Consignor,  
+        eucdm:communication exactly 1 eucdm:Communication 
+    Range: 
+        eucdm:Communication               
+
+#################################################################
+#    Class Supply Chain Actor
+#################################################################        
+Class: eucdm:SupplyChainActor
+    Annotations:
+    rdfs:label "Supply Chain Actor"@en   
+    SubClassOf: 
+        eucdm:Actor
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:SupplyChainActor
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:SupplyChainActor
+    Range: 
+        xsd:string #an..70
+
+DataProperty: eucdm:Role
+    Annotations:
+    rdfs:label "Role"@en   
+    Domain: 
+        eucdm:SupplyChainActor
+    Range: 
+        xsd:string #an..70        
+
+#################################################################
+#    Additional Supply Chain Actor
+#################################################################        
+Class: eucdm:AdditionalSupplyChainActor
+    Annotations:
+    rdfs:label "Additional Supply Chain Actor"@en   
+    #EquivalentTo: eucdm:SupplyChainActor, wocdm:AEOMutualRecognitionParty
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:AdditionalSupplyChainActor
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:Role
+    Annotations:
+    rdfs:label "Role"@en   
+    Domain: 
+        eucdm:AdditionalSupplyChainActor
+    Range: 
+        xsd:string #an..70   
+                
+#################################################################
+#    Representative
+#################################################################        
+Class: eucdm:Representative
+    Annotations:
+    rdfs:label "Representative"@en   
+    #EquivalentTo: wocdm:Agent
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:Representative
+    Range: 
+        xsd:string #an..70
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:Representative
+    Range: 
+        xsd:string #an..17        
+
+DataProperty: eucdm:Status
+    Annotations:
+    rdfs:label "Status"@en   
+    Domain: 
+        eucdm:Representative
+    Range: 
+        xsd:integer #n1
+
+ObjectProperty: eucdm:address
+    Domain: 
+        eucdm:Representative,  
+        eucdm:address some eucdm:Address 
+    Range: 
+        eucdm:Address     
+
+ ObjectProperty: eucdm:communication
+    Domain: 
+        eucdm:Representative,  
+        eucdm:communication exactly 1 eucdm:Communication 
+    Range: 
+        eucdm:Communication    
+
+#################################################################
+#    Actor
+#################################################################        
+Class: eucdm:Actor
+    Annotations:
+    rdfs:label "Actor"@en   
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:Actor
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:Actor
+    Range: 
+        xsd:string #an..70        
+
+DataProperty: eucdm:Role
+    Annotations:
+    rdfs:label "Role"@en   
+    Domain: 
+        eucdm:Actor
+    Range: 
+        xsd:string #an..3  
+
+#################################################################
+#    Declaration Type
+#################################################################        
+Class: eucdm:DeclarationType
+    Annotations:
+    rdfs:label "Declaration Type"@en   
+
+DataProperty: eucdm:DeclarationType
+    Annotations:
+    rdfs:label "Declaration Type"@en   
+    Domain: 
+        eucdm:DeclarationType
+    Range: 
+        xsd:string #an..5  
+
+#################################################################
+#    Declarant
+#################################################################        
+Class: eucdm:Declarant
+    Annotations:
+    rdfs:label "Declarant"@en   
+SubClassOf: 
+    eucdm:SupplyChainActor
+#EquivalentTo: wocdm:Declarant
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "IdentificationNumber"@en   
+    Domain: 
+        eucdm:Declarant
+    Range: 
+        xsd:string #an..17
+
+DataProperty: eucdm:Name
+    Annotations:
+    rdfs:label "Name"@en   
+    Domain: 
+        eucdm:Declarant
+    Range: 
+        xsd:string #an..70     
+
+ObjectProperty: eucdm:address
+    Domain: 
+        eucdm:Declarant,  
+        eucdm:address some eucdm:Address 
+    Range: 
+        eucdm:Address               
+
+#################################################################
+#    Information
+#################################################################        
+Class: eucdm:Information
+    Annotations:
+    rdfs:label "Information"@en   
+
+DataProperty: eucdm:Code
+    Annotations:
+    rdfs:label "Code"@en   
+    Domain: 
+        eucdm:Information
+    Range: 
+        xsd:string #an5   
+
+DataProperty: eucdm:Text
+    Annotations:
+    rdfs:label "Text"@en   
+    Domain: 
+        eucdm:Information
+    Range: 
+        xsd:string #an..512
+
+#################################################################
+#    Additional Information 
+#################################################################        
+Class: eucdm:AdditionalInformation
+    Annotations:
+    rdfs:label "Additional Information"@en    
+    #EquivalentTo: eucdm:Information      
+
+#################################################################
+#    Document
+#################################################################        
+Class: eucdm:Document
+    Annotations:
+    rdfs:label "Document"@en   
+
+DataProperty: eucdm:ReferenceNumber
+    Annotations:
+    rdfs:label "Reference Number"@en   
+    Domain: 
+        eucdm:Document
+    Range: 
+        xsd:string #an..70                
+
+DataProperty: eucdm:Type
+    Annotations:
+    rdfs:label "Type"@en   
+    Domain: 
+        eucdm:Document
+    Range: 
+        xsd:string #an4   
+
+#################################################################
+#    Transport Document
+#################################################################        
+Class: eucdm:TransportDocument
+    Annotations:
+    rdfs:label "Transport Document"@en  
+    subClassOf:
+        eucdm:Document     
+    #EquivalentTo: wocdm:TransportContractDocument
+
+#################################################################
+#    Supporting Document
+#################################################################        
+Class: eucdm:SupportingDocument
+    Annotations:
+    rdfs:label "Supporting Document"@en  
+    subClassOf:
+        eucdm:Document   
+    #EquivalentTo: wocdm:AdditionalDocument
+
+#################################################################
+#    Previous  Document
+#################################################################        
+Class: eucdm:PreviousDocument
+    Annotations:
+    rdfs:label "Previous Document"@en  
+    subClassOf:
+        eucdm:Document     
+    #EquivalentTo: wocdm:TransportContractDocument
+
+DataProperty: eucdm:GoodsItemIdentifier
+    Annotations:
+    rdfs:label "Goods Item Identifier"@en   
+    Domain: 
+        eucdm:PreviousDocument
+    Range: 
+        xsd:string #n..5   
+
+ObjectProperty: eucdm:goodsItemIdentifier
+    Domain: 
+        eucdm:PreviousDocument,  
+        eucdm:goodsItemIdentifier some eucdm:GoodsItemNumber 
+    Range: 
+        eucdm:GoodsItemNumber       
+
+#################################################################
+#    ReferenceNumberUCR
+#################################################################        
+Class: eucdm:ReferenceNumberUCR
+    Annotations:
+    rdfs:label "Reference Number UCR"@en   
+    #EquivalentTo: wocdm:UCR
+
+DataProperty: eucdm:ReferenceNumberUCR
+    Annotations:
+    rdfs:label "Reference Number UCR"@en   
+    Domain: 
+        eucdm:ReferenceNumberUCR
+    Range: 
+        xsd:string #an..35                
+
+
+#################################################################
+#    Description of Goods
+#################################################################        
+Class: eucdm:DescriptionOfGoods
+    Annotations:
+    rdfs:label "Description of Goods"@en   
+    #EquivalentTo: wocdm:Commodity
+
+DataProperty: eucdm:DescriptionofGoods
+    Annotations:
+    rdfs:label "Description of Goods"@en   
+    Domain: 
+        eucdm:DescriptionOfGoods
+    Range: 
+        xsd:string #an..512   
+
+ObjectProperty: eucdm:cuscode
+    Domain: 
+        eucdm:DescriptionOfGoods,  
+        eucdm:cuscode some eucdm:CUScode 
+    Range: 
+        eucdm:CUScode        
+
+#################################################################
+#    Class Goods Item Number
+#################################################################    
+   
+Class: eucdm:GoodsItemNumber
+    Annotations:
+    rdfs:label "Goods Item Number"@en   
+    #EquivalentTo: wocdm:ConsignmentItem
+
+DataProperty: eucdm:GoodsItemInumber
+    Annotations:
+    rdfs:label "Goods Item Number"@en   
+    Domain: 
+        eucdm:GoodsItemNumber
+    Range: 
+        xsd:integer #n..5   
+
+#################################################################
+#    CUS code
+#################################################################        
+Class: eucdm:CUScode
+    Annotations:
+    rdfs:label "Cuscode"@en  
+    #EquivalentTo: wocdm:Classification
+
+DataProperty: eucdm:CombinedNomeclatureCode
+    Annotations:
+    rdfs:label "CombinedNomeclatureCode"@en   
+    Domain: 
+        eucdm:CUScode
+    Range: 
+        xsd:string #an..2                 
+
+DataProperty: eucdm:HarmonisedSystemSubheadingCode
+    Annotations:
+    rdfs:label "CombinedNomeclatureCode"@en   
+    Domain: 
+        eucdm:CUScode
+    Range: 
+        xsd:string #an..6                        
+
+#################################################################
+#    Gross mass
+#################################################################        
+Class: eucdm:GrossMass
+    Annotations:
+    rdfs:label "Gross Mass"@en  
+    #EquivalentTo: wocdm:GrossMassMeasure
+
+DataProperty: eucdm:GrossMass
+    Annotations:
+    rdfs:label "Gross Mass"@en   
+    Domain: 
+        eucdm:GrossMass
+    Range: 
+        xsd:float #n..16,6                 
+
+#################################################################
+#    Total Gross mass
+#################################################################        
+Class: eucdm:TotalGrossMass
+    Annotations:
+    rdfs:label "Total Gross Mass"@en  
+    #EquivalentTo: wocdm:TotalGrossMassMeasure
+
+DataProperty: eucdm:TotalGrossMass
+    Annotations:
+    rdfs:label "Total Gross Mass"@en   
+    Domain: 
+        eucdm:TotalGrossMass
+    Range: 
+        xsd:float #n..16,6    
+
+#################################################################
+#    Packaging
+#################################################################        
+Class: eucdm:Packaging
+    Annotations:
+    rdfs:label "Packaging"@en  
+    #EquivalentTo: wocdm:Packaging
+
+DataProperty: eucdm:NumberOfPackages
+    Annotations:
+    rdfs:label "Number Of Packages"@en   
+    Domain: 
+        eucdm:Packaging
+    Range: 
+        xsd:integer #n..8            
+
+DataProperty: eucdm:TypeOfPackages
+    Annotations:
+    rdfs:label "Type Of Packages"@en   
+    Domain: 
+        eucdm:Packaging
+    Range: 
+        xsd:string #an2       
+
+DataProperty: eucdm:ShippingMarks
+    Annotations:
+    rdfs:label "Shipping Marks"@en   
+    Domain: 
+        eucdm:Packaging
+    Range: 
+        xsd:string #an..512     
+
+#################################################################
+#    Inland mode of Transport
+#################################################################        
+Class: eucdm:InlandModeOfTransport
+    Annotations:
+    rdfs:label "Inland mode of Transport"@en  
+    ##EquivalentTo: wocdm:ArrivalTransportMeans
+
+DataProperty: eucdm:InlandModeOfTransport
+    Annotations:
+    rdfs:label "Mode of transport at arrival, coded"@en   
+    Domain: 
+        eucdm:InlandModeOfTransport
+    Range: 
+        xsd:integer #n1           
+
+#################################################################
+#    Transport Means
+#################################################################        
+Class: eucdm:TransportMeans
+    Annotations:
+    rdfs:label "Transport Means"@en  
+    #EquivalentTo: wocdm:TransportMeans
+
+DataProperty: eucdm:IdentificationNumber
+    Annotations:
+    rdfs:label "Identification Number of Transport Means"@en   
+    Domain: 
+        eucdm:TransportMeans
+    Range: 
+        xsd:string #an..35     
+
+DataProperty: eucdm:TypeOfIdentification
+    Annotations:
+    rdfs:label "Type Of Identification"@en   
+    Domain: 
+        eucdm:TransportMeans
+    Range: 
+        xsd:string #n2          
+
+DataProperty: eucdm:Nationality
+    Annotations:
+    rdfs:label "Nationality"@en   
+    Domain: 
+        eucdm:TransportMeans
+    Range: 
+        xsd:string #a2    
+
+DataProperty: eucdm:ModeOfTransport
+    Annotations:
+    rdfs:label "Mode of Transport"@en   
+    Domain: 
+        eucdm:TransportMeans
+    Range: 
+        xsd:string #n1          
+                
+#################################################################
+#    Transport Equipment
+#################################################################        
+Class: eucdm:TransportEquipment
+    Annotations:
+    rdfs:label "Transport Equipment"@en  
+    #EquivalentTo: wocdm:TransportMeans
+
+DataProperty: eucdm:ContainerIdentificationNumber
+    Annotations:
+    rdfs:label "Identification Number of Container"@en   
+    Domain: 
+        eucdm:TransportEquipment
+    Range: 
+        xsd:string #an..17   
+
+DataProperty: eucdm:NumberOfSeals
+    Annotations:
+    rdfs:label "Number of Seals"@en   
+    Domain: 
+        eucdm:TransportEquipment
+    Range: 
+        xsd:string #n..4       
+
+#################################################################
+#    Seal
+#################################################################        
+Class: eucdm:Seal
+    Annotations:
+    rdfs:label "Seal"@en  
+    #EquivalentTo: wocdm:TransportMeans
+
+DataProperty: eucdm:Identifier
+    Annotations:
+    rdfs:label "Seal Identifier"@en   
+    Domain: 
+        eucdm:Seal
+    Range: 
+        xsd:string #an..20   
+
+#################################################################
+#    Departure Transport Means
+#################################################################        
+Class: eucdm:DepartureTransportMeans
+    Annotations:
+    rdfs:label "Departure Transport Means"@en  
+    subClassOf: eucdm:TransportMeans
+    #EquivalentTo: wocdm:DepartureTransportMeans
+
+DataProperty: eucdm:InlandModeOfTransport
+    Annotations:
+    rdfs:label "Inland Mode of Transport"@en   
+    Domain: 
+        eucdm:DepartureTransportMeans
+    Range: 
+        xsd:string #n1 
+
+#################################################################
+#    Class Border Transport Means
+#################################################################        
+Class: eucdm:ActiveBorderTransportMeans
+    Annotations:
+    rdfs:label "Active Border Transport Means"@en           
+    #EquivalentTo:  wocdm:ActiveBorderTransportMeans
+    subClassOf: eucdm:TransportMeans
+
+#DataProperty: eucdm:IdentificationNumber
+#    Annotations:
+#    rdfs:label "Identification Number"@en   
+#    Domain: 
+#        eucdm:ActiveBorderTransportMeans
+#    Range: 
+#        xsd:string   #an..35 
+
+#DataProperty: eucdm:TypeOfIdentification
+#    Annotations:
+#    rdfs:label "Type Of Identification"@en   
+#    Domain: 
+#        eucdm:ActiveBorderTransportMeans
+#    Range: 
+#        xsd:integer   #n2
+
+#DataProperty: eucdm:Nationality
+#    Annotations:
+#    rdfs:label "Nationality"@en   
+#    Domain: 
+#        eucdm:ActiveBorderTransportMeans
+#    Range: 
+#         xsd:string   #a2             
+
+DataProperty: eucdm:ModeOfTransportAtTheBorder
+    Annotations:
+    rdfs:label "Mode of Transport at the Border"@en   
+    Domain: 
+        eucdm:ActiveBorderTransportMeans
+    Range: 
+        xsd:integer   #n1  
+
+
+#################################################################
+#    Guarantee Reference
+#################################################################        
+Class: eucdm:GuaranteeReference
+    Annotations:
+    rdfs:label "Guarantee Reference"@en  
+    #EquivalentTo: wocdm:TransportMeans
+
+DataProperty: eucdm:AmountToBeCovered
+    Annotations:
+    rdfs:label "Amount to be covered"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:decimal #an..16,2                        
+
+DataProperty: eucdm:Currency
+    Annotations:
+    rdfs:label "Denomination, Currency"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #an3
+
+DataProperty: eucdm:OtherGuaranteesReference
+    Annotations:
+    rdfs:label "Other Guarantees Reference"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #an..35
+
+ DataProperty: eucdm:GuaranteeNotValidIn
+    Annotations:
+    rdfs:label "Guarantee Not Valid in"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #a2  
+
+ DataProperty: eucdm:GRN
+    Annotations:
+    rdfs:label "GRN"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #an..24   
+
+ DataProperty: eucdm:GuaranteeType
+    Annotations:
+    rdfs:label "Guarantee Type"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #an1                    
+
+ DataProperty: eucdm:AccessCode
+    Annotations:
+    rdfs:label "Access Code"@en   
+    Domain: 
+        eucdm:GuaranteeReference
+    Range: 
+        xsd:string #an..4     
+
+#################################################################
+#    Customs Office
+#################################################################        
+Class: eucdm:CustomsOffice
+    Annotations:
+    rdfs:label "Customs Office Guarantee"@en  
+    #EquivalentTo: wocdm:
+
+DataProperty: eucdm:ID
+    Annotations:
+    rdfs:label "Customs Office ID"@en   
+    Domain: 
+        eucdm:CustomsOffice
+    Range: 
+        xsd:string  #an8    
+
+#################################################################
+#    Guarantee Office
+#################################################################        
+Class: eucdm:GuaranteeOffice
+    Annotations:
+    rdfs:label "Customs Office Guarantee"@en  
+    subClassOf: eucdm:CustomsOffice
+    #EquivalentTo: wocdm:
+
+DataProperty: eucdm:CustomsOfficeOfGuarantee
+    Annotations:
+    rdfs:label "Customs Office of Guarantee Reference No"@en   
+    Domain: 
+        eucdm:GuaranteeOffice
+    Range: 
+        xsd:string #an8    
+
+#################################################################
+#    Customs Office of Destination
+#################################################################        
+Class: eucdm:CustomsOfficeOfDestination
+    Annotations:
+    rdfs:label "Customs Office Of Destination"@en  
+    subClassOf: eucdm:CustomsOffice
+    #EquivalentTo: wocdm:
+
+DataProperty: eucdm:ReferenceNumber
+    Annotations:
+    rdfs:label "Reference Number"@en   
+    Domain: 
+        eucdm:GuaranteeOffice
+    Range: 
+        xsd:string #an8            
